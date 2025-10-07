@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متحف الغربان - رواية مستوحاة من الواقع</title>
+    <style>
+        /* التنسيقات العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+        
+        /* الهيدر */
+        header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b8b8b8;
+            margin-bottom: 2rem;
+        }
+        
+        /* القائمة */
+        nav {
+            background: #1a1a1a;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: #d4af37;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #f4d03f;
+        }
+        
+        /* الأقسام */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            color: #d4af37;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 1rem;
+        }
+        
+        /* قسم البطل */
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #e8e8e8;
+        }
+        
+        .cta-button {
+            background: #d4af37;
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #f4d03f;
+        }
+        
+        /* قسم الأبحاث */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .research-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+            transition: transform 0.3s;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .research-card h4 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        
+        .download-link {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        /* معرض الصور */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        /* قسم الشهادات */
+        #testimonials {
+            background: #1a1a1a;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 10px;
+            border-top: 4px solid #d4af37;
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #b8b8b8;
+        }
+        
+        .testimonial-card cite {
+            color: #d4af37;
+            font-weight: bold;
+        }
+        
+        /* نموذج الاتصال */
+        #contact {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: #0a0a0a;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            color: #e8e8e8;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* الفوتر */
+        footer {
+            background: #000;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 3px solid #d4af37;
+        }
+        
+        .social-links {
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            color: #d4af37;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .copyright {
+            color: #b8b8b8;
+            margin-top: 2rem;
+        }
+        
+        /* التجاوب مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            nav a {
+                margin: 0 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">متحف الغربان</div>
+        <div class="subtitle">رواية مستندة إلى أبحاث أنثروبولوجية حقيقية في سيبيريا</div>
+    </header>
+
+    <!-- القائمة -->
+    <nav>
+        <a href="#hero">الرئيسية</a>
+        <a href="#research">الأبحاث</a>
+        <a href="#gallery">الأرشيف</a>
+        <a href="#testimonials">الشهادات</a>
+        <a href="#contact">اتصل بنا</a>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section id="hero">
+        <h1 class="hero-title">اكتشف الأسرار الحقيقية وراء الرواية</h1>
+        <p class="hero-subtitle">استندت رواية "متحف الغربان" إلى وثائق حقيقية من الأرشيف الروسي وأبحاث ميدانية في سيبيريا</p>
+        <button class="cta-button">استكشف الأرشيف السري</button>
+    </section>
+
+    <!-- قسم الأبحاث -->
+    <section id="research">
+        <h2 class="section-title">الأبحاث العلمية المستند عليها</h2>
+        <div class="research-grid">
+            <div class="research-card">
+                <h4>الذاكرة الجينية عند شعوب سيبيريا</h4>
+                <p>دراسة د. إيرينا فولكوفا - جامعة موسكو 2015</p>
+                <p>بحث ميداني يوثق ظاهرة توارث الذكريات عبر الأجيال في قبائل الإيفينك</p>
+                <a href="#" class="download-link">تحميل البحث الكامل →</a>
+            </div>
+            
+            <div class="research-card">
+                <h4>ظاهرة العيون الذهبية في الفولكلور السيبيري</h4>
+                <p>مجلة الأنثروبولوجيا الطبية - العدد 34</p>
+                <p>تحليل 127 حالة موثقة لأطفال ذوي عيون ذهبية في قرى سيبيريا النائية</p>
+                <a href="#" class="download-link">قراءة الملخص →</a>
+            </div>
+            
+            <div class="research-card">
+                <h4>الغربان في الميثولوجيا السلافية</h4>
+                <p>د. سيرغي فاسيليف - مركز الدراسات السيبيرية</p>
+                <p>دراسة الأساطير الحضرية حول الغربان كحراس للذاكرة الجماعية</p>
+                <a href="#" class="download-link">تحميل الدراسة →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- معرض الصور -->
+    <section id="gallery">
+        <h2 class="section-title">الأرشيف المصور</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1546971586-9a965df15f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="مناظر سيبيريا الطبيعية">
+                <p>مناطق سيبيريا النائية - مسرح أحداث الرواية</p>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="غربان">
+                <p>الغربان - رموز الحكمة والذاكرة في الأساطير</p>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1596727147705-61a532a659bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="مباني موسكو القديمة">
+                <p>المباني التاريخية في موسكو - إلهام متحف الغربان</p>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1483721310020-03333ac641b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="مخطوطات قديمة">
+                <p>مخطوطات الأرشيف الروسي - مصدر إلهام الوثائق</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الشهادات -->
+    <section id="testimonials">
+        <h2 class="section-title">شهادات الخبراء</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"الرواية تلامس حقائق أنثروبولوجية عميقة في تراث سيبيريا، وتقدم رؤية أدبية متميزة لأساطير حقيقية"</p>
+                <cite>- د. ألكسندر بتروف، مختص في الفولكلور الروسي</cite>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"أسطورة أطفال العيون الذهبية موجودة في مخطوطات تعود للقرن 18، والرواية تقدم تفسيراً أدبياً مبدعاً لهذه الظاهرة"</p>
+                <cite>- د. ناتاليا أورلوفا، باحثة في الأرشيف الوطني</cite>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"كمتخصص في الأنثروبولوجيا العصبية، أرى أن الرواية تطرح أسئلة عميقة عن طبيعة الذاكرة والهوية"</p>
+                <cite>- د. ماركوس شتاين، معهد ماكس بلانك</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج الاتصال -->
+    <section id="contact">
+        <h2 class="section-title">شاركنا قصتك</h2>
+        <div class="contact-form">
+            <div class="form-group">
+                <label for="name">اسمك الكريم</label>
+                <input type="text" id="name" placeholder="أدخل اسمك">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" placeholder="example@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">هل واجهت ظواهر غامضة؟ شاركنا قصتك</label>
+                <textarea id="message" placeholder="اكتب قصتك هنا..."></textarea>
+            </div>
+            
+            <button class="cta-button" style="width: 100%;">إرسال الشهادة</button>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="logo" style="font-size: 2rem;">متحف الغربان</div>
+        <p class="subtitle">حيث تلتقي الحقيقة بالأسطورة</p>
+        
+        <div class="social-links">
+            <a href="#">إنستغرام</a>
+            <a href="#">تويتر</a>
+            <a href="#">يوتيوب</a>
+            <a href="#">الموقع الرسمي</a>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2024 متحف الغربان - جميع الحقوق محفوظة</p>
+            <p>هذا موقع ترويجي لأغراض أدبية - الرواية مستوحاة من أساطير وفولكلور حقيقي</p>
+            <p>للاستزادة العلمية: الأرشيف الوطني الروسي - جامعة موسكو - مركز الدراسات السيبيرية</p>
+        </div>
+    </footer>
+
+    <script>
+        // سكريبت بسيط للتنقل السلس
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // سكريبت لنموذج الاتصال
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if(name && email && message) {
+                alert('شكراً لك! سنراجع قصتك قريباً.');
+            } else {
+                alert('يرجى ملء جميع الحقول');
+            }
+        });
+    </script>
+</body>
+</html>
